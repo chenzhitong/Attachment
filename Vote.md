@@ -119,11 +119,11 @@ class Statistic
 
 查询投票的信息。
 
-其中 isRaw 为 true 时获得原始信息，返回的对象的 rawData 字段中包含每个地址投了哪个选项。
+其中 isRaw 为 true 时获得原始信息，返回的对象的 rawData 字段中包含每个地址投了哪个选项，任何时刻都可调用。
 
 isRaw 为 false 时获得统计信息，返回的对象的 statisticalData 字段中包含每个选项获得了多少票数。
 
-该方法仅在 voteDeadline 之后，voteDeadline 之前才可调用。第一次会比较复杂，要计算每个地址的 NEO 余额。统计信息后将其存储，之后再次调用时直接读取数据，不再计算。
+isRaw 为 false 时该方法仅在 voteDeadline 之后，voteDeadline 之前才可调用，并且投票的发起人需要在这一段时间内进行调用，否则投票将失效。第一次会比较复杂，要计算每个地址的 NEO 余额。统计信息后将其存储，之后再次调用时直接读取数据，不再计算。
 
 #### 参数：
 
