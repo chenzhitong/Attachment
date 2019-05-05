@@ -94,18 +94,18 @@ Details GetDetails(UInt256 id, bool isRaw)
 class Details
 {
     UInt256 id;
-	UInt160 originator;
+    UInt160 originator;
     string title;
     string description;
     object[] option;
     bool multiSelect;
     int deadline;
-	Raw[] rawData; //原始数据
+    Raw[] rawData; //原始数据
     Statistic[] statisticalData; //统计数据
 }
 class Raw
 {
-	object[] option;
+    object[] option;
     UInt160 address;
 }
 class Statistic
