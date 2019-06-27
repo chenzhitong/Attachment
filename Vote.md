@@ -16,6 +16,8 @@
 
 [查看详情](#查看详情-getdetails)
 
+[统计](#统计-getstatistic)
+
 ## 功能
 
 ### 创建投票 Create
@@ -76,7 +78,7 @@ bool Vote(UInt256 id, Uint160 voter, object[] option)
 
 #### 描述：
 
-参与者用来投票的方法，填写投票的 ID，自己的地址以及选项，截止时间后不能投票。投票后，该地址里指定的 NEO 资产数量将作为票数。
+参与者用来投票的方法，填写投票的 ID，自己的地址以及选项，截止时间后不能投票。投票后，该地址里的 NEO 资产数量将作为票数。
 
 #### 参数：
 
@@ -93,11 +95,11 @@ option 选项
 ### 查看详情 GetDetails
 
 ```c#
-Details GetDetails(UInt256 id, bool isRaw)
+RawDetails GetDetails(UInt256 id)
 ```
 
 ```c#
-class Details
+class RawDetails
 {
     UInt256 id;
     UInt160 originator;
@@ -106,15 +108,48 @@ class Details
     object[] option;
     bool multiSelect;
     int deadline;
-    Raw[] rawData; //原始数据
-    Statistic[] statisticalData; //统计数据
+    RawData[] rawData; //原始数据
 }
-class Raw
+class RawData
 {
     object[] option;
     UInt160 address;
 }
+```
+
+#### 描述：
+
+查询投票的信息。
+
+获得投票的原始信息，返回的对象的 rawData 字段中包含每个地址投了哪个选项，任何时刻都可调用。
+
+#### 参数：
+
+id 投票的 ID
+
+#### 返回值：
+
+Deatils 类型的投票结果
+
+### 统计 GetStatistic
+
+```c#
+Statistic GetStatistic(UInt256 id)
+```
+
+```c#
 class Statistic
+{
+    UInt256 id;
+    UInt160 originator;
+    string title;
+    string description;
+    object[] option;
+    bool multiSelect;
+    int deadline;
+    StatisticalData[] statisticalData; //统计数据
+}
+class StatisticalData
 {
     object[] option;
     int voteCount;
@@ -123,13 +158,11 @@ class Statistic
 
 #### 描述：
 
-查询投票的信息。
+查询投票的统计信息。
 
-其中 isRaw 为 true 时获得原始信息，返回的对象的 rawData 字段中包含每个地址投了哪个选项，任何时刻都可调用。
+获得统计信息，返回的对象的 statisticalData 字段中包含每个选项获得了多少票数。
 
-isRaw 为 false 时获得统计信息，返回的对象的 statisticalData 字段中包含每个选项获得了多少票数。
-
-isRaw 为 false 时该方法仅在 voteDeadline 之后，voteDeadline 之前才可调用，并且投票的发起人需要在这一段时间内进行调用，否则投票将失效。第一次会比较复杂，要计算每个地址的 NEO 余额。统计信息后将其存储，之后再次调用时直接读取数据，不再计算。
+该方法仅需要在 voteDeadline 之后，voteDeadline 之前调用一次，投票的发起人（或其它任何人）需要在这一段时间内进行调用，否则投票将失效。第一次会比较复杂，要计算每个地址的 NEO 余额。统计信息后将其存储，之后再次调用时直接读取数据，不再计算。
 
 #### 参数：
 
@@ -137,4 +170,6 @@ id 投票的 ID
 
 #### 返回值：
 
-Deatils 类型的投票结果查看统计结果 GetStatistics
+Statistic 类型的投票结果
+
+
