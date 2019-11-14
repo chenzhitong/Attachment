@@ -1,5 +1,27 @@
 # hightlight.js
 
+
+
+## 测试 ~\`!@#$%\^&*()_+=[]\\{}|;':\",./<>? Hello World
+
+## 测试 🐷
+
+## 测试 [a](https://neo.org)
+
+## 测试 [b](
+
+## 测试 [c]
+
+## 测试 (d)
+
+## 测试 `hello world`
+
+## 测试**test**Test
+
+## 测试 :scream: 
+
+
+
 ## Bash
 
 ```bash
@@ -188,6 +210,7 @@ hello world
 1. one thing (yeah!)
 2. two thing `i can write code`, and `more` wipee!
 
+
 ```
 
 ## PHP
@@ -246,6 +269,7 @@ datahere
 datahere */
 datahere
 
+
 ```
 
 ## Shell Session
@@ -262,6 +286,7 @@ $ echo 'All
 > done!'
 All
 done!
+
 
 ```
 
@@ -280,6 +305,7 @@ REFERENCES "forum" ("id");
 -- Initials
 insert into "topic" ("forum_id", "subject")
 values (2, 'D''artagnian');
+
 
 ```
 
@@ -300,20 +326,5 @@ values (2, 'D''artagnian');
   <!-- here goes the rest of the page -->
 </body>
 
+
 ```
-
-## 测试 ~\`!@#$%^&*()_+=[]\\{}|;':\",./<>? Hello World
-
-## 测试 🐷
-
-## 测试 [a](https://neo.org)
-
-## 测试 [b](
-
-## 测试 [c]
-
-## 测试 (d)
-
-## 测试 `hello world`
-
-## 测试**test**Test
