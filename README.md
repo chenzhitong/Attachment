@@ -22,6 +22,10 @@
 
 ## 666
 
+## 旧版 Ubuntu（如 16.04）
+
+## 命令列表 (Command List)：
+
 ## Bash
 
 ```bash
